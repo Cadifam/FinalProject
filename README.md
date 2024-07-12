@@ -137,17 +137,40 @@ The output of the (probabilities) is often called soft predictions. These tell u
     -specifyging where to save the file
     -save the model
 
-## Testing the Model:
 
-    Load libraries
-        -import numpy as np
-        -import pandas as pd
-        -import pickle
+## Making predictions:
 
-    -load the saved model
-    -Load applicant Data to predict status (Approve/Reject) of application
+    Using the parameters provided for about the applicant, provide the following information and run the application to make a prediction.
 
-    Models's verdict:
+    gender (0=Male, 1=Female)
+    married (0=Yes, 1=No)
+    dependents = number of dependants
+    education = Graduate, Not Graduate
+    self_employed = (Yes, No)
+    applicationincome = income of the applicant
+    coapplicantincome = income of the guarantor
+    loanamount = amount applying for
+    loan_amount_term = period required to pay back loan (where 1= one month, 2= two months, ....13=thirteen months)
+    credit history (0= has applied for loan befor, 1= has not applied for loan before)
+    property_area = location of colatoral (Rural, Urban)
+
+        EXAMPLE
+                applicant = {
+                    'customerid': 0,
+                    'gender': 1,
+                    'married': 0,
+                    'dependents': 2,
+                    'education': 'Graduate',
+                    'self_employed': 'Yes',    
+                    'applicantincome': 50083.0,
+                    'coapplicantincome': 10.0,
+                    'loanamount': 100.0,
+                    'loan_amount_term': 24,
+                    'credit_history': 0,
+                    'property_area': 'Rural', 
+        }
+
+## Models's verdict:
 
         -if prediction >= 0.5, applicant is in a good financial standing to pay back loan; therefore "Approve"
         -if prediction <= 0.5, applicant is not in a good financial standing to pay back loan; therefore "Reject"
